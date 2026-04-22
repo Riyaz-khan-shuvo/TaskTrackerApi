@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\AuthOperation\Queries\**" />
+    <Compile Remove="Features\CommonOperation\**" />
+    <Compile Remove="Features\UserMenuOperation\Command\**" />
+    <Compile Remove="Features\UserMenuOperation\Queries\**" />
+    <EmbeddedResource Remove="Features\AuthOperation\Queries\**" />
+    <EmbeddedResource Remove="Features\CommonOperation\**" />
+    <EmbeddedResource Remove="Features\UserMenuOperation\Command\**" />
+    <EmbeddedResource Remove="Features\UserMenuOperation\Queries\**" />
+    <None Remove="Features\AuthOperation\Queries\**" />
+    <None Remove="Features\CommonOperation\**" />
+    <None Remove="Features\UserMenuOperation\Command\**" />
+    <None Remove="Features\UserMenuOperation\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskTracker.Core\TaskTracker.Core.csproj" />
+    <ProjectReference Include="..\TaskTracker.Shared\TaskTracker.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\TaskOperation\Commands\" />
+    <Folder Include="Features\TaskOperation\Queries\" />
+  </ItemGroup>
+
+</Project>
