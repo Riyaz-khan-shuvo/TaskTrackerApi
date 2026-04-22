@@ -1,6 +1,8 @@
-﻿namespace TaskTracker.Core.Entities
+﻿using TaskTracker.Core.Common;
+
+namespace TaskTracker.Core.Entities
 {
-    public class TaskItem
+    public class TaskItem : IEntityBase<int>
     {
         public int Id { get; set; }
 

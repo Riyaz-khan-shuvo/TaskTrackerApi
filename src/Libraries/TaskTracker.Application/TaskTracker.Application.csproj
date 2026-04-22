@@ -38,9 +38,4 @@
     <ProjectReference Include="..\TaskTracker.Shared\TaskTracker.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\TaskOperation\Commands\" />
-    <Folder Include="Features\TaskOperation\Queries\" />
-  </ItemGroup>
-
 </Project>
