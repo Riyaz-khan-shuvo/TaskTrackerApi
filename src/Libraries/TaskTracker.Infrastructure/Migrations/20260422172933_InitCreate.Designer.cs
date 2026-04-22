@@ -12,8 +12,8 @@ using TaskTracker.Infrastructure.Persistence.DataContext;
 namespace TaskTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260422145858_Add_sp_GetAssignedMenuList")]
-    partial class Add_sp_GetAssignedMenuList
+    [Migration("20260422172933_InitCreate")]
+    partial class InitCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,32 @@ namespace TaskTracker.Infrastructure.Migrations
                     b.HasIndex("BusinessCategoryTypeId");
 
                     b.ToTable("BusinessCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BusinessCategoryTypeId = 1,
+                            Description = "Low Priority",
+                            IsActive = true,
+                            Name = "Low"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BusinessCategoryTypeId = 1,
+                            Description = "Medium Priority",
+                            IsActive = true,
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BusinessCategoryTypeId = 1,
+                            Description = "High Priority",
+                            IsActive = true,
+                            Name = "High"
+                        });
                 });
 
             modelBuilder.Entity("TaskTracker.Core.Entities.BusinessCategoryType", b =>
@@ -74,6 +100,15 @@ namespace TaskTracker.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BusinessCategoryTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Task Priority Group",
+                            IsActive = true,
+                            Name = "Priority"
+                        });
                 });
 
             modelBuilder.Entity("TaskTracker.Core.Entities.Menu", b =>
@@ -190,6 +225,24 @@ namespace TaskTracker.Infrastructure.Migrations
                             SubChildId = 0,
                             SubParentId = 0,
                             Url = "/SetUp/MenuAuthorization/RoleMenu"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Controller = "Task",
+                            CreatedBy = "SYSTEM",
+                            CreatedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            DisplayOrder = 12,
+                            IconClass = "nav-icon fas fa-tasks",
+                            IsActive = true,
+                            LastModifiedBy = "SYSTEM",
+                            LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Module = "SetUp",
+                            Name = "Task",
+                            ParentId = 1,
+                            SubChildId = 0,
+                            SubParentId = 0,
+                            Url = "/SetUp/Task"
                         });
                 });
 
@@ -366,65 +419,9 @@ namespace TaskTracker.Infrastructure.Migrations
                             LastModifiedBy = "SYSTEM",
                             LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             List = true,
-                            MenuId = 1,
+                            MenuId = 4,
                             Post = true,
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedBy = "SYSTEM",
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Delete = true,
-                            Insert = true,
-                            LastModifiedBy = "SYSTEM",
-                            LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            List = true,
-                            MenuId = 2,
-                            Post = true,
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedBy = "SYSTEM",
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Delete = true,
-                            Insert = true,
-                            LastModifiedBy = "SYSTEM",
-                            LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            List = true,
-                            MenuId = 3,
-                            Post = true,
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedBy = "SYSTEM",
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Delete = false,
-                            Insert = false,
-                            LastModifiedBy = "SYSTEM",
-                            LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            List = true,
-                            MenuId = 1,
-                            Post = false,
-                            RoleId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedBy = "SYSTEM",
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Delete = false,
-                            Insert = false,
-                            LastModifiedBy = "SYSTEM",
-                            LastModifiedOn = new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            List = true,
-                            MenuId = 2,
-                            Post = false,
-                            RoleId = 3
+                            RoleId = 1
                         });
                 });
 

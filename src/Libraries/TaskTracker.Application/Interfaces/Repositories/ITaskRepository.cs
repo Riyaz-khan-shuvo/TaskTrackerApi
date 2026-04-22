@@ -1,5 +1,5 @@
-﻿using Scholify.Application.Features.Teachers.TeacherOperation.ViewModels;
-using TaskTracker.Application.DTOs.Common.Grid;
+﻿using TaskTracker.Application.DTOs.Common.Grid;
+using TaskTracker.Application.Features.TaskOperation.ViewModels;
 using TaskTracker.Application.Interfaces.Repositories.Common;
 using TaskTracker.Core.Entities;
 

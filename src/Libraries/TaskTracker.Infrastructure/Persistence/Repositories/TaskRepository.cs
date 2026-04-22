@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Scholify.Application.Features.Teachers.TeacherOperation.ViewModels;
 using TaskTracker.Application.DTOs.Common.Grid;
+using TaskTracker.Application.Features.TaskOperation.ViewModels;
 using TaskTracker.Application.Interfaces.Repositories;
 using TaskTracker.Application.Interfaces.Services.Common;
 using TaskTracker.Core.Entities;
@@ -36,7 +36,8 @@ namespace TaskTracker.Infrastructure.Persistence.Repositories
                     Description = x.Description,
                     IsCompleted = x.IsCompleted,
                     DueDate = x.DueDate,
-                    CreatedAt = x.CreatedAt
+                    CreatedAt = x.CreatedAt,
+                    PriorityName = x.Priority.Name
                 });
 
             return await _gridService.GetEfGridDataAsync(query, options, cancellationToken);
@@ -56,7 +57,8 @@ namespace TaskTracker.Infrastructure.Persistence.Repositories
                     Description = x.Description,
                     IsCompleted = x.IsCompleted,
                     DueDate = x.DueDate,
-                    CreatedAt = x.CreatedAt
+                    CreatedAt = x.CreatedAt,
+                    PriorityId = x.PriorityId
                 })
                 .FirstOrDefaultAsync(cancellationToken);
         }

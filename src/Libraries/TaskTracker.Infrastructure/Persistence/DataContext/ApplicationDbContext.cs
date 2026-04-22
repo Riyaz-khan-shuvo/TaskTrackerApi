@@ -34,6 +34,7 @@ namespace TaskTracker.Infrastructure.Persistence.DataContext
             modelBuilder.SeedMenuData();
             modelBuilder.SeedRoleData();
             modelBuilder.SeedRoleMenuData();
+            modelBuilder.SeedBusinessCategory();
         }
 
         private static void ConfigureIndexes(ModelBuilder modelBuilder)

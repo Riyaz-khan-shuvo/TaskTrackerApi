@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Scholify.Application.Features.Teachers.TeacherOperation.ViewModels;
 using TaskTracker.Application.DTOs.Common;
+using TaskTracker.Application.Features.TaskOperation.ViewModels;
 using TaskTracker.Application.UnitOfWorkContracts;
 using TaskTracker.Core.Entities;
 
@@ -22,7 +22,18 @@ namespace TaskTracker.Application.Features.TaskOperation.Commands
 
             public async Task<ResultVM> Handle(UpsertTaskCommand request, CancellationToken cancellationToken)
             {
-                TaskItem entity = _mapper.Map<TaskItem>(request);
+                //TaskItem entity = _mapper.Map<TaskItem>(request);
+
+                TaskItem entity = new TaskItem
+                {
+                    Id = request.Id,
+                    Title = request.Title,
+                    Description = request.Description,
+                    DueDate = request.DueDate,
+                    PriorityId = request.PriorityId,
+                    IsCompleted = request.IsCompleted,
+                    CreatedAt = request.CreatedAt
+                };
 
                 if (request.Id == 0)
                 {

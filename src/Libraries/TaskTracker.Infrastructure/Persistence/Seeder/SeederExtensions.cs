@@ -27,7 +27,7 @@ namespace TaskTracker.Infrastructure.Persistence.Seeder
                     LastModifiedBy = "SYSTEM",
                     LastModifiedOn = now,
                     IconClass = "nav-icon fa-solid fa-user-shield",
-                    IsActive=true
+                    IsActive = true
 
                 },
 
@@ -69,7 +69,25 @@ namespace TaskTracker.Infrastructure.Persistence.Seeder
                     IconClass = "nav-icon fas fa-user-shield",
                     IsActive = true
 
-                }
+                },
+                  new Menu
+                  {
+                      Id = 4,
+                      Name = "Task",
+                      Url = "/SetUp/Task",
+                      Module = "SetUp",
+                      Controller = "Task",
+                      ParentId = 1,
+                      SubParentId = 0,
+                      SubChildId = 0,
+                      DisplayOrder = 12,
+                      CreatedBy = "SYSTEM",
+                      CreatedOn = now,
+                      LastModifiedBy = "SYSTEM",
+                      LastModifiedOn = now,
+                      IconClass = "nav-icon fas fa-tasks",
+                      IsActive = true
+                  }
             );
         }
 
@@ -134,14 +152,61 @@ namespace TaskTracker.Infrastructure.Persistence.Seeder
                 new RoleMenu { Id = 1, RoleId = superAdminRoleId, MenuId = 1, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
                 new RoleMenu { Id = 2, RoleId = superAdminRoleId, MenuId = 2, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
                 new RoleMenu { Id = 3, RoleId = superAdminRoleId, MenuId = 3, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
+                new RoleMenu { Id = 4, RoleId = superAdminRoleId, MenuId = 4, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, }
 
-                new RoleMenu { Id = 4, RoleId = adminRoleId, MenuId = 1, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
-                new RoleMenu { Id = 5, RoleId = adminRoleId, MenuId = 2, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
-                new RoleMenu { Id = 6, RoleId = adminRoleId, MenuId = 3, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
+                //new RoleMenu { Id = 4, RoleId = adminRoleId, MenuId = 1, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
+                //new RoleMenu { Id = 5, RoleId = adminRoleId, MenuId = 2, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
+                //new RoleMenu { Id = 6, RoleId = adminRoleId, MenuId = 3, List = true, Insert = true, Delete = true, Post = true, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
 
-                new RoleMenu { Id = 7, RoleId = userRoleId, MenuId = 1, List = true, Insert = false, Delete = false, Post = false, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
-                new RoleMenu { Id = 8, RoleId = userRoleId, MenuId = 2, List = true, Insert = false, Delete = false, Post = false, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, }
+                //new RoleMenu { Id = 7, RoleId = userRoleId, MenuId = 1, List = true, Insert = false, Delete = false, Post = false, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, },
+                //new RoleMenu { Id = 8, RoleId = userRoleId, MenuId = 2, List = true, Insert = false, Delete = false, Post = false, CreatedBy = "SYSTEM", CreatedOn = now, LastModifiedBy = "SYSTEM", LastModifiedOn = now, }
+            );
+        }
+
+
+
+
+        public static void SeedBusinessCategory(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BusinessCategoryType>().HasData(
+                new BusinessCategoryType
+                {
+                    Id = 1,
+                    Name = "Priority",
+                    Description = "Task Priority Group",
+                    IsActive = true
+                }
+            );
+
+            modelBuilder.Entity<BusinessCategory>().HasData(
+                new BusinessCategory
+                {
+                    Id = 1,
+                    Name = "Low",
+                    Description = "Low Priority",
+                    BusinessCategoryTypeId = 1,
+                    IsActive = true
+                },
+                new BusinessCategory
+                {
+                    Id = 2,
+                    Name = "Medium",
+                    Description = "Medium Priority",
+                    BusinessCategoryTypeId = 1,
+                    IsActive = true
+                },
+                new BusinessCategory
+                {
+                    Id = 3,
+                    Name = "High",
+                    Description = "High Priority",
+                    BusinessCategoryTypeId = 1,
+                    IsActive = true
+                }
             );
         }
     }
+
+
+
 }

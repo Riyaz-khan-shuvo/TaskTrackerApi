@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TaskTracker.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalCreate : Migration
+    public partial class InitCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -183,13 +183,19 @@ namespace TaskTracker.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "BusinessCategoryTypes",
+                columns: new[] { "Id", "Description", "IsActive", "Name" },
+                values: new object[] { 1, "Task Priority Group", true, "Priority" });
+
+            migrationBuilder.InsertData(
                 table: "Menus",
                 columns: new[] { "Id", "Controller", "CreatedBy", "CreatedFrom", "CreatedOn", "DisplayOrder", "IconClass", "IsActive", "LastModifiedBy", "LastModifiedOn", "LastUpdateFrom", "Module", "Name", "ParentId", "SubChildId", "SubParentId", "Url" },
                 values: new object[,]
                 {
                     { 1, null, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 8, "nav-icon fa-solid fa-user-shield", true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "SetUp", "Menu Authorization", 0, 0, 0, null },
                     { 2, "MenuAuthorization", "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 9, "nav-icon fas fa-user-circle", true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "SetUp", "Role", 1, 0, 0, "/SetUp/MenuAuthorization/Role" },
-                    { 3, "MenuAuthorization", "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 11, "nav-icon fas fa-user-shield", true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "SetUp", "Role Menu Assign", 1, 0, 0, "/SetUp/MenuAuthorization/RoleMenu" }
+                    { 3, "MenuAuthorization", "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 11, "nav-icon fas fa-user-shield", true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "SetUp", "Role Menu Assign", 1, 0, 0, "/SetUp/MenuAuthorization/RoleMenu" },
+                    { 4, "Task", "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 12, "nav-icon fas fa-tasks", true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "SetUp", "Task", 1, 0, 0, "/SetUp/Task" }
                 });
 
             migrationBuilder.InsertData(
@@ -203,6 +209,16 @@ namespace TaskTracker.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "BusinessCategories",
+                columns: new[] { "Id", "BusinessCategoryTypeId", "Description", "IsActive", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Low Priority", true, "Low" },
+                    { 2, 1, "Medium Priority", true, "Medium" },
+                    { 3, 1, "High Priority", true, "High" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "RoleMenus",
                 columns: new[] { "Id", "CreatedBy", "CreatedFrom", "CreatedOn", "Delete", "Insert", "LastModifiedBy", "LastModifiedOn", "LastUpdateFrom", "List", "MenuId", "Post", "RoleId" },
                 values: new object[,]
@@ -210,11 +226,7 @@ namespace TaskTracker.Infrastructure.Migrations
                     { 1, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 1, true, 1 },
                     { 2, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 2, true, 1 },
                     { 3, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 3, true, 1 },
-                    { 4, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 1, true, 2 },
-                    { 5, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 2, true, 2 },
-                    { 6, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 3, true, 2 },
-                    { 7, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), false, false, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 1, false, 3 },
-                    { 8, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), false, false, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 2, false, 3 }
+                    { 4, "SYSTEM", null, new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), true, true, "SYSTEM", new DateTimeOffset(new DateTime(2024, 11, 18, 10, 0, 45, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, true, 4, true, 1 }
                 });
 
             migrationBuilder.CreateIndex(
